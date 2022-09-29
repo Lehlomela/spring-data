@@ -9,16 +9,18 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 @SpringBootApplication
 public class DemoApplication {
 
   private static final Logger log = LoggerFactory.getLogger(DemoApplication.class);
 
-  private CustomerRepository repository;
+  private final CustomerRepository repository;
 
-  private CustomerRepositoryPagingAndSorting pagingAndSorting;
+  private final CustomerRepositoryPagingAndSorting pagingAndSorting;
 
   public DemoApplication(final CustomerRepository repository,
                          CustomerRepositoryPagingAndSorting pagingAndSorting) {
@@ -34,18 +36,52 @@ public class DemoApplication {
   public CommandLineRunner demo() {
     return (args) -> {
 
-      log.info("Customer found with findTopByLastName('Bauer'):");
-      log.info("--------------------------------------------");
-//      repository.findByLastNameAgeLessThan50("Bauer").forEach(bauer -> {
-//        log.info(bauer.toString());
-//      });
-      log.info("");
 
+      sorting();
     };
   }
 
+  private void paging() {
+    log.info("\nCustomer found with findTopByLastName('Bauer'):");
+    log.info("--------------------------------------------");
+    Page<Customer> bauers = pagingAndSorting.findByLastName("Bauer", Pageable.ofSize(1));
+    bauers.forEach( bauer -> {
+
+      log.info(bauer.toString());
+    });
+
+    log.info("bauers.getTotalPages() = " + bauers.getTotalPages());
+    log.info("bauers.getSize() = " + bauers.getSize()); // size of page (num elements)
+
+    log.info("---------------------------------------------------");
+
+    while (bauers.hasNext()) {
+      Pageable pageable = bauers.nextPageable();
+      log.info("pageable.getPageSize() = " + pageable.getPageSize());
+      bauers.getContent(); // returns list of customers
+    }
+  }
+
+
+  private void sorting() {
+
+    Sort sort = Sort.by("age").ascending();
+
+    // todo:: ??
+    Sort sort2 = Sort.by("age").ascending().and(Sort.by("firstName").descending());
+
+
+    log.info("--------------------------------------------");
+    log.info("Sort by age ascending");
+
+    pagingAndSorting.findAll(sort).forEach(bauer -> {
+      log.info("bauer = " + bauer);
+    });
+
+  }
+
   private void workingWithPage() {
-    pagingAndSorting.findByLastName("Bauer", Pageable.ofSize(3));
+    Page<Customer> bauers = pagingAndSorting.findByLastName("Bauer", Pageable.ofSize(3));
   }
 
   private void topAndFirst() {
