@@ -44,8 +44,10 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
   List<Customer> streamByLastName(String lastName);
 
   /*
+   * LIMITING QUERY RESULTS
    * …First<number>…, …Top<number>…
    * between `find` (and the other keywords) and by
+   * Can be used interchangeably
    */
 
   List<Customer> findFirst2ByLastName(String lastName);
@@ -59,6 +61,7 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
 
   /*
    * Distinct: between find and by
+   * Database used has to support
    * todo: check more examples, still don't get it
    */
 

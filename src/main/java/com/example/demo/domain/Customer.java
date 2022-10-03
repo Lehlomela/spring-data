@@ -3,6 +3,7 @@ package com.example.demo.domain;
 import org.springframework.data.annotation.PersistenceCreator;
 
 import javax.persistence.*;
+import java.util.Map;
 import java.util.Objects;
 
 @Entity
@@ -33,6 +34,10 @@ public class Customer {
 
   public String getFirstName() {
     return firstName;
+  }
+
+  public int getAge() {
+    return age;
   }
 
   public String getLastName() {
