@@ -28,7 +28,8 @@ public class DemoApplication {
   public CommandLineRunner demo() {
     return (args) -> {
 
-//      saveCustomers();
+//      bqm.saveCustomers();
+        bqm.topAndFirst();
 //      pagingAndSorting.typeSafeApiSorting();
 //      pagingAndSorting.sorting();
     };

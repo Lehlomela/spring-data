@@ -45,6 +45,7 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
 
   /*
    * LIMITING QUERY RESULTS
+   *
    * …First<number>…, …Top<number>…
    * between `find` (and the other keywords) and by
    * Can be used interchangeably
@@ -53,6 +54,8 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
   List<Customer> findFirst2ByLastName(String lastName);
 
   List<Customer> findTopByLastName(String lastName);
+
+  List<Customer> findTop2ByOrderByAgeDesc();
 
   /*
    * exists…By
