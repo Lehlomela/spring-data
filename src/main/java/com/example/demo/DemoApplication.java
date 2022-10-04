@@ -29,7 +29,8 @@ public class DemoApplication {
     return (args) -> {
 
 //      bqm.saveCustomers();
-        bqm.topAndFirst();
+//        bqm.topAndFirst();
+        bqm.readGetQuerySearchStream();
 //      pagingAndSorting.typeSafeApiSorting();
 //      pagingAndSorting.sorting();
     };

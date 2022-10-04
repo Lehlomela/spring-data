@@ -31,8 +31,7 @@ public class BasicQueryMethods {
 
   public void fetchAllCustomers() {
     // fetch all customers
-    log.info("Customers found with findAll():");
-    log.info("-------------------------------");
+    logInfo("Customers found with findAll():");
     for (Customer customer : repository.findAll()) {
       // does not work with read/get/search
       log.info(customer.toString());
@@ -41,49 +40,51 @@ public class BasicQueryMethods {
     log.info("");
   }
 
-  public void readGetQuerySearch() {
+  public void readGetQuerySearchStream() {
     // fetch customers by last name
-    log.info("Customer found with getByLastName('Bauer'):");
-    log.info("--------------------------------------------");
+    logInfo("Customer found with getByLastName('Bauer'):");
     repository.getByLastName("Bauer").forEach(bauer -> {
       log.info(bauer.toString());
     });
     log.info("");
 
-    log.info("Customers found with readByLastName:");
-    log.info("-------------------------------");
+    logInfo("Customers found with readByLastName:");
     repository.readByLastName("Bauer").forEach(bauer -> {
       log.info(bauer.toString());
     });
     log.info("");
 
-    log.info("Customers found with queryByLastName:");
-    log.info("-------------------------------");
+    logInfo("Customers found with queryByLastName:");
     repository.queryByLastName("Bauer").forEach(bauer -> {
       log.info(bauer.toString());
     });
     log.info("");
 
-    log.info("Customers found with searchByLastName:");
-    log.info("-------------------------------");
+    logInfo("Customers found with searchByLastName:");
     repository.searchByLastName("Bauer").forEach(bauer -> {
       log.info(bauer.toString());
     });
     log.info("");
+
+    logInfo("Customers found with streamByLastName:");
+    repository.streamByLastName("Bauer").forEach(bauer -> {
+      log.info(bauer.toString());
+    });
+    log.info("");
+
+
   }
 
   public void getById() {
     // fetch an individual customer by ID
     Customer customer = repository.findById(1L);
-    log.info("Customer found with findById(1L):");
-    log.info("--------------------------------");
+    logInfo("Customer found with findById(1L):");
     log.info(customer.toString());
     log.info("");
   }
 
   public void countBy() {
-    log.info("Checking the number of customer with countByLastName('Bauer'):");
-    log.info("--------------------------------------------");
+    logInfo("Checking the number of customer with countByLastName('Bauer'):");
     log.info("Exists: " + repository.countByLastName("Bauer"));
     log.info("");
 
@@ -93,21 +94,19 @@ public class BasicQueryMethods {
    * LIMITING QUERY  RESULTS
    */
   public void topAndFirst() {
-    log.info("Customer found with findTopByLastName('Bauer'):");
-    log.info("--------------------------------------------");
+    logInfo("Customer found with findTopByLastName('Bauer'):");
     repository.findTopByLastName("Bauer").forEach(bauer -> {
       log.info(bauer.toString());
     });
     log.info("");
 
-    log.info("Customer found with findTopByOrderByAgeDesc():");
+    logInfo("Customer found with findTopByOrderByAgeDesc():");
     repository.findTop2ByOrderByAgeDesc().forEach(p -> {
       log.info(p.toString());
     });
     log.info("");
 
-    log.info("Customer found with findFirst2ByLastName:");
-    log.info("-------------------------------");
+    logInfo("Customer found with findFirst2ByLastName:");
     repository.findFirst2ByLastName("Bauer").forEach(bauer -> {
       // findFirst also works
       log.info(bauer.toString());
@@ -115,9 +114,13 @@ public class BasicQueryMethods {
     log.info("");
   }
 
-  public void existsBy() {
-    log.info("Checking if customer exists with getByLastName('Bauer'):");
+  private void logInfo(final String msg) {
+    log.info(msg);
     log.info("--------------------------------------------");
+  }
+
+  public void existsBy() {
+    logInfo("Checking if customer exists with getByLastName('Bauer'):");
     log.info("Exists: " + repository.existsByLastName("Bauer"));
     log.info("");
 
@@ -126,5 +129,14 @@ public class BasicQueryMethods {
   public void findDistinct() {
     // todo
   }
+
+  /*
+   * QUERY METHODS THAT RETURN MULTIPLE RESULTS
+   * Use:
+   * Standard Java: Iterable, List, Set
+   * Spring Data's: Streamable (custom extension Iterable)
+   * Collection types provided by [Vavr](https://www.vavr.io/)
+   *
+   */
 
 }

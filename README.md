@@ -77,6 +77,13 @@ interface PersonRepository extends Repository<Person, Long> {
 ```
 > If you do not want to apply any sorting or pagination, use `Sort.unsorted()` and `Pageable.unpaged()`.
 
+---
+
+## [Supported Query Return Types][SQRT] 
+
+
+[SQRT]: https://docs.spring.io/spring-data/commons/docs/current/reference/html/#appendix.query.return.types
+
 --- 
 
 ## Annotations
