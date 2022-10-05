@@ -1,12 +1,13 @@
 package com.example.demo;
 
+import com.example.demo.service.PredicateKeywordsAndModifiers;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class DemoApplication {
+public class Application {
 
   private final Sorting sorting;
 
@@ -14,14 +15,18 @@ public class DemoApplication {
 
   private final Paging paging;
 
-  public DemoApplication(final Sorting sorting, final BasicQueryMethods bqm, final Paging paging) {
+  private final PredicateKeywordsAndModifiers predicateKeyAndMod;
+
+  public Application(final Sorting sorting, final BasicQueryMethods bqm, final Paging paging,
+                     final PredicateKeywordsAndModifiers predicateKeyAndMod) {
     this.sorting = sorting;
     this.bqm = bqm;
     this.paging = paging;
+    this.predicateKeyAndMod = predicateKeyAndMod;
   }
 
   public static void main(String[] args) {
-    SpringApplication.run(DemoApplication.class, args);
+    SpringApplication.run(Application.class, args);
   }
 
   @Bean
@@ -30,9 +35,10 @@ public class DemoApplication {
 
 //      bqm.saveCustomers();
 //        bqm.topAndFirst();
-        bqm.readGetQuerySearchStream();
+//        bqm.readGetQuerySearchStream();
 //      pagingAndSorting.typeSafeApiSorting();
 //      pagingAndSorting.sorting();
+      predicateKeyAndMod.usingPredicateKeywordsAndModifiers();
     };
   }
 
