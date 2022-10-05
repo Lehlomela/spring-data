@@ -14,7 +14,7 @@ import java.util.List;
  *
  * SELECTIVELY EXPOSE CRUD METHODS BY EXTENDING Repository
  */
-public interface CustomerRepositoryPredicateKeyAndMod extends Repository<Customer, Long> {
+public interface PredicateKeyAndMod extends Repository<Customer, Long> {
 
   /*
    * Logical Keyword: KeywordExpression
@@ -23,30 +23,53 @@ public interface CustomerRepositoryPredicateKeyAndMod extends Repository<Custome
   List<Customer> findByFirstNameAndLastName(String firstName, String lastName);
 
   /*
-   * AND
+   * OR: or
    */
+  List<Customer> findByFirstNameOrLastName(String firstName, String lastName);
+
   /*
-   * AND
+   * AFTER: After, IsAfter
    */
+
   /*
-   * AND
+   * BEFORE: Before, IsBefore
    */
+
   /*
-   * AND
+   * CONTAINING: Containing, IsContaining, Contains
+   * Searches for: A word or phrase.
    */
+  List<Customer> findByLastNameContains(String word);
+
   /*
-   * AND
+   * BETWEEN: Between, IsBetween
    */
+  List<Customer> findByAgeBetween(int min, int max);
+
+  List<Customer> findByAgeAndFirstNameBetween(int i, String start, String end);
+
   /*
-   * AND
+   * ENDING_WITH: EndingWith, IsEndingWith, EndsWith
    */
+  List<Customer> findByLastNameEndingWith(String value);
+
+  List<Customer> findByAgeEndingWith(int value);//throws exception
+
   /*
-   * AND
+   * EXISTS: Exists
+   * Unsupported by postgresql ??
    */
+
   /*
-   * AND
+   * False: False, IsFalse
    */
+
+
   /*
-   * AND
+   * GREATER_THAN: GreaterThan, IsGreaterThan
    */
+  List<Customer> findByAgeGreaterThan(int minAge);
+
+  List<Customer> findByFirstNameGreaterThan(String min);
+
 }
