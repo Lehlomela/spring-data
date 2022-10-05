@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class MyStreamable {
 
   private CustomerRepository customerRepository;
-  
+
   public MyStreamable(final CustomerRepository customerRepository) {
     this.customerRepository = customerRepository;
   }

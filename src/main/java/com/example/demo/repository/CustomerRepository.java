@@ -10,7 +10,7 @@ import java.util.List;
  * 1) Declare interface extending repository or one of its sub-interfaces
  * 2) Define domain type and ID type it should handle
  * 3) Declare query methods on interface
- * 4) inject interface and use (DemoApplication.class)
+ * 4) inject interface and use (Application.class)
  *
  * Extend Repository if you do not want to expose CRUD methods
  *
@@ -86,6 +86,6 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
    * 2) .map(...)
    * 3) concatenate Streamable to others
    */
-  Streamable<Customer> findByOrderByLastNameDesc(String lastName);
+  Streamable<Customer> findByLastNameOrderByLastNameDesc(String lastName);
 
 }
