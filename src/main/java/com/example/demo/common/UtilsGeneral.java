@@ -8,7 +8,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class UtilsGeneral {
 
-  private static final Logger log = LoggerFactory.getLogger(BasicQueryMethods.class);
+  public static final Logger log = LoggerFactory.getLogger(BasicQueryMethods.class);
 
-
+  public static void logInfo(final String msg) {
+    log.info(msg);
+    log.info("--------------------------------------------");
+  }
 }
