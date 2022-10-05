@@ -56,7 +56,7 @@ public class Customer {
     if (o == null || getClass() != o.getClass())
       return false;
     Customer customer = (Customer) o;
-    return id.equals(customer.id) && firstName.equals(customer);
+    return id.equals(customer.id) && firstName.equals(customer.firstName);
   }
 
   @Override
