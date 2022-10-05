@@ -2,14 +2,13 @@ package com.example.demo;
 
 import com.example.demo.domain.Customer;
 import com.example.demo.repository.CustomerRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
+import static com.example.demo.common.UtilsGeneral.log;
+import static com.example.demo.common.UtilsGeneral.logInfo;
 
 @Component
 public class BasicQueryMethods {
-
-  private static final Logger log = LoggerFactory.getLogger(BasicQueryMethods.class);
 
   private final CustomerRepository repository;
 
@@ -72,7 +71,6 @@ public class BasicQueryMethods {
     });
     log.info("");
 
-
   }
 
   public void getById() {
@@ -112,11 +110,6 @@ public class BasicQueryMethods {
       log.info(bauer.toString());
     });
     log.info("");
-  }
-
-  private void logInfo(final String msg) {
-    log.info(msg);
-    log.info("--------------------------------------------");
   }
 
   public void existsBy() {
