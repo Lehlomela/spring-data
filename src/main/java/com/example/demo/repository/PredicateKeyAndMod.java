@@ -61,15 +61,73 @@ public interface PredicateKeyAndMod extends Repository<Customer, Long> {
    */
 
   /*
-   * False: False, IsFalse
-   */
-
-
-  /*
    * GREATER_THAN: GreaterThan, IsGreaterThan
    */
   List<Customer> findByAgeGreaterThan(int minAge);
 
   List<Customer> findByFirstNameGreaterThan(String min);
+
+  /*
+   * GREATER_THAN_EQUALS: GreaterThanEqual, IsGreaterThanEqual
+   */
+  List<Customer> findByAgeGreaterThanEqual(int minAge);
+
+  /*
+   * LIKE: Like, IsLike
+   */
+  List<Customer> findByFirstNameLike(String value); // CASE SENSITIVE
+
+  List<Customer> findByFirstNameLikeAllIgnoreCase(String value);
+
+  List<Customer> findByFirstNameAndLastNameLikeAllIgnoreCase(String first, String last);
+
+  /*
+   * NOT_LIKE: NotLike, IsNotLike
+   */
+  List<Customer> findByFirstNameNotLike(String value);
+
+  /*
+   * NEAR: Near, IsNear
+   */
+
+  /*
+   * NOT: Not, IsNot
+   * CASE SENSITIVE
+   * List of names ??
+   */
+  List<Customer> findByFirstNameNot(String name);
+
+  List<Customer> findByFirstNameNot(String... name); // IllegalStateException
+
+  List<Customer> findByAgeNot(int age);
+
+  List<Customer> findByFirstNameNotAndFirstNameNot(String name, String name2);
+
+  /*
+   * NOT_IN: NotIn, IsNotIn
+   * requires a collection arg
+   */
+  List<Customer> findByLastNameNotIn(String... name);
+
+  /*
+   * REGEX: Regex, MatchesRegex, Matches
+   */
+//  List<Customer> findByLastNameMatches(String regex); // Unsupported: postgresql ??
+
+  /*
+   * STARTING_WITH: StartingWith, IsStartingWith, StartsWith
+   */
+  List<Customer> findByLastNameStartingWithIgnoreCase(String start);
+
+  /*
+   * TRUE: True, IsTrue
+   */
+  List<Customer> findByActiveIsTrue();
+
+
+  /*
+   * False: False, IsFalse
+   */
+  List<Customer> findByActiveIsFalse();
 
 }
