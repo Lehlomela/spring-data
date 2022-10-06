@@ -25,9 +25,14 @@ public class Customer {
   }
 
   public Customer(String firstName, String lastName, int age) {
+    this(firstName, lastName, age, true);
+  }
+
+  public Customer(String firstName, String lastName, int age, boolean active) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.age = age;
+    this.active = active;
   }
 
   public Long getId() {
