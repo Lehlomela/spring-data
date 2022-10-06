@@ -16,6 +16,9 @@ import java.util.List;
  */
 public interface PredicateKeyAndMod extends Repository<Customer, Long> {
 
+  /*==============================================================
+   *                    QUERY PREDICATE KEYWORDS
+   ===============================================================*/
   /*
    * Logical Keyword: KeywordExpression
    * AND: And
@@ -124,10 +127,33 @@ public interface PredicateKeyAndMod extends Repository<Customer, Long> {
    */
   List<Customer> findByActiveIsTrue();
 
-
   /*
    * False: False, IsFalse
    */
   List<Customer> findByActiveIsFalse();
 
+  /* =============================================================
+   *                 QUERY PREDICATE MODIFIER KEYWORDS
+   ===============================================================*/
+
+  /*
+   * IgnoreCase, IgnoringCase
+   */
+  List<Customer> findByLastNameNotInIgnoreCase(String... name);
+
+  /*
+   * AllIgnoreCase, AllIgnoringCase
+   * Ignore case for all suitable properties. Used somewhere in the query method predicate.
+   */
+
+
+  /*
+   * OrderBy…
+   */
+
+  List<Customer> findAllByOrderByAgeAsc();
+
+  List<Customer> findAllByOrderByAgeDesc();
+
 }
+

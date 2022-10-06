@@ -51,7 +51,7 @@ public class PredicateKeywordsAndModifiers {
     log("findByAgeGreaterThanEqual(27)",
         predicateKeyAndMod.findByAgeGreaterThanEqual(27));
 
-    likePredicate();
+//    likePredicate();
 
     log("findByFirstNameNotAndFirstNameNot('jack', 'Mpho')",
         predicateKeyAndMod.findByFirstNameNotAndFirstNameNot("jack", "Mpho"));
@@ -59,10 +59,10 @@ public class PredicateKeywordsAndModifiers {
     log("findByAgeNot(20)",
         predicateKeyAndMod.findByAgeNot(20));
 
-    log("findByAgeGreaterThanEqual(27)",
-        predicateKeyAndMod.findByLastNameNotIn("Bauer", "Dessler"));
+    log("findByLastNameNotIn('bauer', 'Dessler')",
+        predicateKeyAndMod.findByLastNameNotInIgnoreCase("bauer", "Dessler"));
 
-    notLikePredicate();
+//    notLikePredicate();
 
     log("findByLastNameStartingWithIgnoreCase('b')",
         predicateKeyAndMod.findByLastNameStartingWithIgnoreCase("b"));
@@ -72,6 +72,12 @@ public class PredicateKeywordsAndModifiers {
 
     log("findByActiveIsFalse()",
         predicateKeyAndMod.findByActiveIsFalse());
+
+    log("findByLastNameNotInAllIgnoreCase(\"bauer\")",
+        predicateKeyAndMod.findByLastNameNotInIgnoreCase("bauer"));
+
+    log("findAllByOrderByAgeAsc()",
+        predicateKeyAndMod.findAllByOrderByAgeAsc());
 
 
   }
