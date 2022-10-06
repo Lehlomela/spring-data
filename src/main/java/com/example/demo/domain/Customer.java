@@ -1,9 +1,8 @@
 package com.example.demo.domain;
 
-import org.springframework.data.annotation.PersistenceCreator;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
-import java.util.Map;
 import java.util.Objects;
 
 @Entity
@@ -18,6 +17,9 @@ public class Customer {
   private String lastName;
 
   private int age;
+
+  @ColumnDefault("True")
+  private boolean active;
 
   protected Customer() {
   }
@@ -42,6 +44,14 @@ public class Customer {
 
   public String getLastName() {
     return lastName;
+  }
+
+  public boolean isActive() {
+    return active;
+  }
+
+  public void setActive(final boolean active) {
+    this.active = active;
   }
 
   @Override
