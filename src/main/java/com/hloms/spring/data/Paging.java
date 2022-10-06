@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.hloms.spring.data;
 
 import org.springframework.stereotype.Component;
 

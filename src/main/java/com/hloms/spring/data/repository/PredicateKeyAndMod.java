@@ -1,6 +1,6 @@
-package com.example.demo.repository;
+package com.hloms.spring.data.repository;
 
-import com.example.demo.domain.Customer;
+import com.hloms.spring.data.domain.Customer;
 import org.springframework.data.repository.Repository;
 
 import java.util.List;

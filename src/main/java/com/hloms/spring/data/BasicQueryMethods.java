@@ -1,11 +1,9 @@
-package com.example.demo;
+package com.hloms.spring.data;
 
-import com.example.demo.domain.Customer;
-import com.example.demo.repository.CustomerRepository;
+import com.hloms.spring.data.domain.Customer;
+import com.hloms.spring.data.repository.CustomerRepository;
+import com.hloms.spring.data.common.UtilsGeneral;
 import org.springframework.stereotype.Component;
-
-import static com.example.demo.common.UtilsGeneral.log;
-import static com.example.demo.common.UtilsGeneral.logInfo;
 
 @Component
 public class BasicQueryMethods {
@@ -30,61 +28,61 @@ public class BasicQueryMethods {
 
   public void fetchAllCustomers() {
     // fetch all customers
-    logInfo("Customers found with findAll():");
+    UtilsGeneral.logInfo("Customers found with findAll():");
     for (Customer customer : repository.findAll()) {
       // does not work with read/get/search
-      log.info(customer.toString());
+      UtilsGeneral.log.info(customer.toString());
     }
 
-    log.info("");
+    UtilsGeneral.log.info("");
   }
 
   public void readGetQuerySearchStream() {
     // fetch customers by last name
-    logInfo("Customer found with getByLastName('Bauer'):");
+    UtilsGeneral.logInfo("Customer found with getByLastName('Bauer'):");
     repository.getByLastName("Bauer").forEach(bauer -> {
-      log.info(bauer.toString());
+      UtilsGeneral.log.info(bauer.toString());
     });
-    log.info("");
+    UtilsGeneral.log.info("");
 
-    logInfo("Customers found with readByLastName:");
+    UtilsGeneral.logInfo("Customers found with readByLastName:");
     repository.readByLastName("Bauer").forEach(bauer -> {
-      log.info(bauer.toString());
+      UtilsGeneral.log.info(bauer.toString());
     });
-    log.info("");
+    UtilsGeneral.log.info("");
 
-    logInfo("Customers found with queryByLastName:");
+    UtilsGeneral.logInfo("Customers found with queryByLastName:");
     repository.queryByLastName("Bauer").forEach(bauer -> {
-      log.info(bauer.toString());
+      UtilsGeneral.log.info(bauer.toString());
     });
-    log.info("");
+    UtilsGeneral.log.info("");
 
-    logInfo("Customers found with searchByLastName:");
+    UtilsGeneral.logInfo("Customers found with searchByLastName:");
     repository.searchByLastName("Bauer").forEach(bauer -> {
-      log.info(bauer.toString());
+      UtilsGeneral.log.info(bauer.toString());
     });
-    log.info("");
+    UtilsGeneral.log.info("");
 
-    logInfo("Customers found with streamByLastName:");
+    UtilsGeneral.logInfo("Customers found with streamByLastName:");
     repository.streamByLastName("Bauer").forEach(bauer -> {
-      log.info(bauer.toString());
+      UtilsGeneral.log.info(bauer.toString());
     });
-    log.info("");
+    UtilsGeneral.log.info("");
 
   }
 
   public void getById() {
     // fetch an individual customer by ID
     Customer customer = repository.findById(1L);
-    logInfo("Customer found with findById(1L):");
-    log.info(customer.toString());
-    log.info("");
+    UtilsGeneral.logInfo("Customer found with findById(1L):");
+    UtilsGeneral.log.info(customer.toString());
+    UtilsGeneral.log.info("");
   }
 
   public void countBy() {
-    logInfo("Checking the number of customer with countByLastName('Bauer'):");
-    log.info("Exists: " + repository.countByLastName("Bauer"));
-    log.info("");
+    UtilsGeneral.logInfo("Checking the number of customer with countByLastName('Bauer'):");
+    UtilsGeneral.log.info("Exists: " + repository.countByLastName("Bauer"));
+    UtilsGeneral.log.info("");
 
   }
 
@@ -92,30 +90,30 @@ public class BasicQueryMethods {
    * LIMITING QUERY  RESULTS
    */
   public void topAndFirst() {
-    logInfo("Customer found with findTopByLastName('Bauer'):");
+    UtilsGeneral.logInfo("Customer found with findTopByLastName('Bauer'):");
     repository.findTopByLastName("Bauer").forEach(bauer -> {
-      log.info(bauer.toString());
+      UtilsGeneral.log.info(bauer.toString());
     });
-    log.info("");
+    UtilsGeneral.log.info("");
 
-    logInfo("Customer found with findTopByOrderByAgeDesc():");
+    UtilsGeneral.logInfo("Customer found with findTopByOrderByAgeDesc():");
     repository.findTop2ByOrderByAgeDesc().forEach(p -> {
-      log.info(p.toString());
+      UtilsGeneral.log.info(p.toString());
     });
-    log.info("");
+    UtilsGeneral.log.info("");
 
-    logInfo("Customer found with findFirst2ByLastName:");
+    UtilsGeneral.logInfo("Customer found with findFirst2ByLastName:");
     repository.findFirst2ByLastName("Bauer").forEach(bauer -> {
       // findFirst also works
-      log.info(bauer.toString());
+      UtilsGeneral.log.info(bauer.toString());
     });
-    log.info("");
+    UtilsGeneral.log.info("");
   }
 
   public void existsBy() {
-    logInfo("Checking if customer exists with getByLastName('Bauer'):");
-    log.info("Exists: " + repository.existsByLastName("Bauer"));
-    log.info("");
+    UtilsGeneral.logInfo("Checking if customer exists with getByLastName('Bauer'):");
+    UtilsGeneral.log.info("Exists: " + repository.existsByLastName("Bauer"));
+    UtilsGeneral.log.info("");
 
   }
 

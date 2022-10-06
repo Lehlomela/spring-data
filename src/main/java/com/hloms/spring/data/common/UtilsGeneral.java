@@ -1,6 +1,6 @@
-package com.example.demo.common;
+package com.hloms.spring.data.common;
 
-import com.example.demo.BasicQueryMethods;
+import com.hloms.spring.data.BasicQueryMethods;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

@@ -1,13 +1,11 @@
-package com.example.demo.service;
+package com.hloms.spring.data.service;
 
-import com.example.demo.domain.Customer;
-import com.example.demo.repository.PredicateKeyAndMod;
+import com.hloms.spring.data.domain.Customer;
+import com.hloms.spring.data.repository.PredicateKeyAndMod;
+import com.hloms.spring.data.common.UtilsGeneral;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-import static com.example.demo.common.UtilsGeneral.log;
-import static com.example.demo.common.UtilsGeneral.logInfo;
 
 @Service
 public class PredicateKeywordsAndModifiers {
@@ -19,11 +17,11 @@ public class PredicateKeywordsAndModifiers {
   }
 
   public static void log(final String msg, final List<Customer> predicateKeyAndMod) {
-    logInfo(msg);
+    UtilsGeneral.logInfo(msg);
     predicateKeyAndMod.forEach(customer -> {
-      log.info(customer + "");
+      UtilsGeneral.log.info(customer + "");
     });
-    log.info("");
+    UtilsGeneral.log.info("");
   }
 
   public void usingPredicateKeywordsAndModifiers() {

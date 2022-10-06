@@ -1,6 +1,6 @@
-package com.example.demo;
+package com.hloms.spring.data;
 
-import com.example.demo.service.PredicateKeywordsAndModifiers;
+import com.hloms.spring.data.service.PredicateKeywordsAndModifiers;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.example.demo.domain;
+package com.hloms.spring.data.domain;
 
 import org.hibernate.annotations.ColumnDefault;
 

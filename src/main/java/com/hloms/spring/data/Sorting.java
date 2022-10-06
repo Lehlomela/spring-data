@@ -1,7 +1,7 @@
-package com.example.demo;
+package com.hloms.spring.data;
 
-import com.example.demo.domain.Customer;
-import com.example.demo.repository.CustomerRepositoryPagingAndSorting;
+import com.hloms.spring.data.domain.Customer;
+import com.hloms.spring.data.repository.CustomerRepositoryPagingAndSorting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Sort;

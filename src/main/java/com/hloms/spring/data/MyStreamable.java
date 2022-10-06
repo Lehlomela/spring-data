@@ -1,6 +1,6 @@
-package com.example.demo;
+package com.hloms.spring.data;
 
-import com.example.demo.repository.CustomerRepository;
+import com.hloms.spring.data.repository.CustomerRepository;
 import org.springframework.stereotype.Component;
 
 @Component
