@@ -17,4 +17,8 @@ public interface StreamableRepository extends MyBaseRepository {
 
   Streamable<Customer> findByLastNameOrderByFirstNameDesc(String lastName);
 
+  /*
+   * Returning Custom Streamable Wrapper Types
+   * https://docs.spring.io/spring-data/commons/docs/current/reference/html/#repositories.collections-and-iterables.streamable-wrapper
+   */
 }
