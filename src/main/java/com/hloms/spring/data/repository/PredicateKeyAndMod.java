@@ -155,5 +155,9 @@ public interface PredicateKeyAndMod extends Repository<Customer, Long> {
 
   List<Customer> findAllByOrderByAgeDesc();
 
+  /*
+   * NOTNULL: NotNull
+   */
+  List<Customer> findByFirstNameNotNull();
 }
 
