@@ -67,20 +67,20 @@ interface PersonRepository extends Repository<Person, Long> {
 #### Special Parameter Handling
 
 ```java
-    Page<User> findByLastname(String lastname, Pageable pageable);
+    Page<User> findByLastname(String lastname,Pageable pageable);
 
-    Slice<User> findByLastname(String lastname, Pageable pageable);
+    Slice<User> findByLastname(String lastname,Pageable pageable);
 
-    List<User> findByLastname(String lastname, Sort sort);
+    List<User> findByLastname(String lastname,Sort sort);
 
-    List<User> findByLastname(String lastname, Pageable pageable);
+    List<User> findByLastname(String lastname,Pageable pageable);
 ```
+
 > If you do not want to apply any sorting or pagination, use `Sort.unsorted()` and `Pageable.unpaged()`.
 
 ---
 
-## [Supported Query Return Types][SQRT] 
-
+## [Supported Query Return Types][SQRT]
 
 [SQRT]: https://docs.spring.io/spring-data/commons/docs/current/reference/html/#appendix.query.return.types
 
@@ -91,4 +91,38 @@ interface PersonRepository extends Repository<Person, Long> {
 `@RepositoryDefinition`: use if you do not want to extend Spring Data interfaces.
 <br>
 `@NoRepositoryBean`: repository interfaces for which Spring Data should not create instances at runtime.
+
+### Nullability Annotations
+
+`@NonNullApi`: Used on the package level to declare that the default behavior for parameters and return values is,
+respectively, neither to accept nor to produce null values.
+
+`@NonNull`: Used on a parameter or return value that must not be null (not needed on a parameter and return value where
+@NonNullApi applies).
+
+`@Nullable`: Used on a parameter or return value that can be null
+
+```java
+package com.acme;
+
+import org.springframework.lang.Nullable;
+
+interface UserRepository extends Repository<User, Long> {
+
+  // Throws an EmptyResultDataAccessException when the query does not produce a result.
+  // Throws an IllegalArgumentException when the emailAddress handed to the method is null.
+  User getByEmailAddress(EmailAddress emailAddress);
+
+  // Returns null when the query does not produce a result.
+  // Also accepts null as the value for emailAddress.
+  @Nullable
+  User findByEmailAddress(@Nullable EmailAddress emailAdress);
+
+  // 	Returns Optional.empty() when the query does not produce a result.
+  // Throws an IllegalArgumentException when the emailAddress handed to the method is null.
+  Optional<User> findOptionalByEmailAddress(EmailAddress emailAddress);
+
+}
+
+```
 
