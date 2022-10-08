@@ -1,4 +1,4 @@
-package com.hloms.spring.data.service;
+package com.hloms.spring.data.usage;
 
 import com.hloms.spring.data.domain.Customer;
 import com.hloms.spring.data.repository.PredicateKeyAndMod;

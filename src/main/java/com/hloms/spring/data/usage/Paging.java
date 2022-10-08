@@ -1,4 +1,4 @@
-package com.hloms.spring.data;
+package com.hloms.spring.data.usage;
 
 import org.springframework.stereotype.Component;
 

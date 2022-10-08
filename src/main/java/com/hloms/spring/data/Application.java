@@ -1,7 +1,6 @@
 package com.hloms.spring.data;
 
-import com.hloms.spring.data.service.PredicateKeywordsAndModifiers;
-import com.hloms.spring.data.service.MyStreamable;
+import com.hloms.spring.data.usage.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
