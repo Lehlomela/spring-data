@@ -1,6 +1,7 @@
 package com.hloms.spring.data;
 
 import com.hloms.spring.data.service.PredicateKeywordsAndModifiers;
+import com.hloms.spring.data.service.MyStreamable;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,13 +16,16 @@ public class Application {
 
   private final Paging paging;
 
+  private final MyStreamable myStreamable;
+
   private final PredicateKeywordsAndModifiers predicateKeyAndMod;
 
   public Application(final Sorting sorting, final BasicQueryMethods bqm, final Paging paging,
-                     final PredicateKeywordsAndModifiers predicateKeyAndMod) {
+                     final MyStreamable myStreamable, final PredicateKeywordsAndModifiers predicateKeyAndMod) {
     this.sorting = sorting;
     this.bqm = bqm;
     this.paging = paging;
+    this.myStreamable = myStreamable;
     this.predicateKeyAndMod = predicateKeyAndMod;
   }
 
@@ -38,7 +42,10 @@ public class Application {
 //        bqm.readGetQuerySearchStream();
 //      pagingAndSorting.typeSafeApiSorting();
 //      pagingAndSorting.sorting();
-      predicateKeyAndMod.usingPredicateKeywordsAndModifiers();
+//      predicateKeyAndMod.usingPredicateKeywordsAndModifiers();
+
+      myStreamable.stream();
+
     };
   }
 
